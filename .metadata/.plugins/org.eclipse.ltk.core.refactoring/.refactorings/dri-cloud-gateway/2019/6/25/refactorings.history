@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy element &apos;GatewayApplication.java&apos; to &apos;dri-cloud-producer/src/main/java&apos;&#x0D;&#x0A;- Original project: &apos;dri-cloud-gateway&apos;&#x0D;&#x0A;- Destination element: &apos;dri-cloud-producer/src/main/java&apos;&#x0D;&#x0A;- Original element: &apos;com.dri.GatewayApplication.java&apos;" description="Copy compilation unit" destination="=dri-cloud-producer/src\/main\/java" element1="/src\/main\/java&lt;com.dri{GatewayApplication.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1560843095110" units="1" version="1.0"/>
-</session>
