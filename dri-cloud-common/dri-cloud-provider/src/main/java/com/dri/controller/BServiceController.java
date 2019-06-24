@@ -15,10 +15,10 @@ public class BServiceController {
 	@Value("${spring.application.name}")
 	String serviceName;
 
-	@SentinelResource("resource")
+	//@SentinelResource("resource")
 	@GetMapping("/get")
 	public String query(String param) throws Exception {	
-		return serviceName + ":" + port;
+		return "query B service";
 	}
 	
 }
