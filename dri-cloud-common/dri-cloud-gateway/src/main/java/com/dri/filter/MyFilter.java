@@ -25,7 +25,18 @@ public class MyFilter extends ZuulFilter {
 		
 		RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
+        
+        
+        Object accessToken1 = request.getHeader("Authorization");
+        if (accessToken1==null){
+        	System.out.println("Authorization token is empty!!!!!!!!!!!!!!!!");
+        	ctx.setSendZuulResponse(false);
+        	ctx.setResponseStatusCode(401);
+        	ctx.setResponseBody("Authorization token is empty");
+            return null;
+        }
 
+        /*
         System.out.println(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
         //log.info(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
 
@@ -38,8 +49,8 @@ public class MyFilter extends ZuulFilter {
             ctx.setResponseStatusCode(401);
             return null;
         }
+        */
         System.out.println("access token ok");
-        
         return null;
 	}
 

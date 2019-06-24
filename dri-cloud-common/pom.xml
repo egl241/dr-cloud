@@ -41,5 +41,6 @@
 		<module>dri-cloud-gateway</module>
 		<module>dri-cloud-consumer</module>
 		<module>dri-cloud-provider</module>
+		<module>dri-cloud-oauth</module>
 	</modules>
 </project>
