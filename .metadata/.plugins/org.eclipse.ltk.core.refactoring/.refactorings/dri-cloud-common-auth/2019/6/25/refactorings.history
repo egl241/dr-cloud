@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete element from project &apos;dri-cloud-common-auth&apos;&#x0D;&#x0A;- Original project: &apos;dri-cloud-common-auth&apos;&#x0D;&#x0A;- Original element: &apos;dri-cloud-common-auth/src/main/java/common&apos;&#x0D;&#x0A;- Delete subpackages" description="Delete element" element1="/src\/main\/java&lt;common.util" element2="/src\/main\/java&lt;common.store" element3="/src\/main\/java&lt;common.service.impl" element4="/src\/main\/java&lt;common.service" element5="/src\/main\/java&lt;common.properties" element6="/src\/main\/java&lt;common.constants" element7="/src\/main\/java&lt;common.config" element8="/src\/main\/java&lt;common" elements="8" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1560912186222" subPackages="true" version="1.0"/>
+</session>

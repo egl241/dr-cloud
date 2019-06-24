@@ -1,0 +1,29 @@
+server.port=8011
+spring.application.name=dri-cloud-consumer
+
+#Nacos Server 地址
+spring.cloud.nacos.discovery.server-addr=127.0.0.1:8848
+management.endpoints.web.exposure.include=*
+#Sentinel 控制台地址
+spring.cloud.sentinel.transport.port=8200
+spring.cloud.sentinel.transport.dashboard=localhost:8080
+#取消Sentinel控制台懒加载
+spring.cloud.sentinel.eager=true
+
+#sentinel流控规则
+spring.cloud.sentinel.datasource.ds.nacos.server-addr=127.0.0.1:8848
+spring.cloud.sentinel.datasource.ds.nacos.dataId=${spring.application.name}.flow
+spring.cloud.sentinel.datasource.ds.nacos.groupId=DEFAULT_GROUP
+spring.cloud.sentinel.datasource.ds.nacos.rule-type=flow
+
+#sentinel熔断规则
+spring.cloud.sentinel.datasource.ds1.nacos.server-addr=127.0.0.1:8848
+spring.cloud.sentinel.datasource.ds1.nacos.dataId=${spring.application.name}.degrade
+spring.cloud.sentinel.datasource.ds1.nacos.groupId=DEFAULT_GROUP
+spring.cloud.sentinel.datasource.ds1.nacos.rule-type=degrade
+
+#sentinel系统规则
+spring.cloud.sentinel.datasource.ds3.nacos.server-addr=127.0.0.1:8848
+spring.cloud.sentinel.datasource.ds3.nacos.dataId=${spring.application.name}.system
+spring.cloud.sentinel.datasource.ds3.nacos.groupId=DEFAULT_GROUP
+spring.cloud.sentinel.datasource.ds3.nacos.rule-type=system
