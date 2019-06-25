@@ -2,16 +2,28 @@ package com.dri.filter;
 
 
 
+import java.io.UnsupportedEncodingException;
+
 import javax.servlet.http.HttpServletRequest;
 
-
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.SignatureException;
+import io.jsonwebtoken.UnsupportedJwtException;
+
 public class MyFilter extends ZuulFilter {
 	
+	private static final Logger log = LoggerFactory.getLogger(MyFilter.class);
 
 
 	@Override
@@ -27,8 +39,38 @@ public class MyFilter extends ZuulFilter {
         HttpServletRequest request = ctx.getRequest();
         
         
-        Object accessToken1 = request.getHeader("Authorization");
-        if (accessToken1==null){
+        Object accessToken = request.getHeader("Authorization");
+        String token = StringUtils.substringAfter(request.getHeader("Authorization"), "Bearer ");
+
+		try {
+			Claims claims = Jwts.parser().setSigningKey("test".getBytes("UTF-8")).parseClaimsJws(token.toString()).getBody();
+			log.info("Expirate date:"+claims.getExpiration());
+			log.info("authorities:"+claims.get("authorities"));
+			log.info("client_id:"+claims.get("client_id"));
+		
+		} catch (ExpiredJwtException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedJwtException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MalformedJwtException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SignatureException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+		
+        
+        if (accessToken==null){
         	System.out.println("Authorization token is empty!!!!!!!!!!!!!!!!");
         	ctx.setSendZuulResponse(false);
         	ctx.setResponseStatusCode(401);
